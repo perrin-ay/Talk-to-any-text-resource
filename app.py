@@ -54,13 +54,9 @@ Are there any cpu events in the alteon syslogs ?
   else:
     return otherans
 
-query = "show me the latest MP CPU event in the syslogs ?"
-query = "In aw db , how many entries under Description column contain AllowList?"
-query = "how is apples made ?"
+
 full_chain = RunnableLambda(query_classifier) | RunnableLambda(chain_selector)
-#print ("query: ", query)
-#resp =  full_chain.invoke(query)
-#print (resp)
+
 
 def chained_qa(message, history):
   return full_chain.invoke(message)
