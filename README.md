@@ -1,12 +1,12 @@
----
-title: rdwrServices POC - Talk to your Alteon syslogs, Appwall DB and Alteon REST api guide
-emoji: 💬
-colorFrom: yellow
-colorTo: purple
-sdk: gradio
-sdk_version: 4.36.1
-app_file: app.py
-pinned: false
-license: apache-2.0
+# Multi services question answering bot
+
+#### Try it here
+
+https://huggingface.co/spaces/bridge4/CLIUserGuide
+
 ---
 
+- Hybrid search with ensemble retriever fusion rank of BM25 and semanctic search retrievers
+- Rerank with Cohere
+- Langchain LCEL RAG
+- Chat interface with Gradio
