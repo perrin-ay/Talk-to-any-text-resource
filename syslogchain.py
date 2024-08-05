@@ -52,11 +52,6 @@ from langchain_core.prompts import (
 from langchain_core.tools import Tool
 from langchain_experimental.utilities import PythonREPL
 
-
-
-
-
-#loading text syslog as df
 with open("alteon_syslogs.txt") as fd:
   txtdocuments = fd.read()
 
