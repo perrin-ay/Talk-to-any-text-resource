@@ -61,8 +61,7 @@ from langchain_experimental.utilities import PythonREPL
 
 ##### Authenticate for gcloud to pull aw db####
 def get_credentials():
-    creds_json_str = os.getenv('gcloud_json') # get json credentials stored as a string
-#    creds_json_str = userdata.get('gcloud_json')
+    creds_json_str = os.getenv('gcloud_json') 
     if creds_json_str is None:
         raise ValueError("GOOGLE_APPLICATION_CREDENTIALS_JSON not found in environment")
     with tempfile.NamedTemporaryFile(mode="w+", delete=False, suffix=".json") as temp:
@@ -112,14 +111,6 @@ class gcsLoad(object):
     print(f"Labels: {self.bucket.labels}")
 
   def bucketContents(self, onlyfiles = False):
-    """
-    self.bucket.list_blobs() is an iterator that yields Blob objects.
-    Returns contents of buckets , folders and file names as a list
-    example:
-    ['alteon_syslogs/', 'alteon_syslogs/alteon_syslogs.txt', 'appwall_db/', 'appwall_db/dbe.security.db',
-    'userguides/', 'userguides/Alteon CLI User Guide.pdf']
-    """
-
     self.listing = []
     for blob in self.bucket.list_blobs():
       if onlyfiles:
@@ -147,7 +138,7 @@ class gcsLoad(object):
     return self.docs
 
   def downloadFilesMemory(self, folder = None, files = None):
-    """Downloads as bytes. Print only works if its text. For text advised to decode as contents.decode("utf-8")"""
+    """Downloads as bytes. Print only works if its text."""
     download = {}
     if folder != None:
       blobsls = self.foldercontents(folder=folder)
@@ -162,9 +153,6 @@ class gcsLoad(object):
     return download
 
   def downloadFilesLocal(self, folder = None, files = None, destinationFolder ='/content/'):
-      """ The destination is set to write to colab directory. Change to your path
-      will write to destinationFolder+blob.name.replace('/','_')
-      """
       filenames = []
       if folder != None:
         blobsls = self.foldercontents(folder=folder)
@@ -220,8 +208,8 @@ class gcsLoad(object):
 #### end of gcs helper class #########
 
 ### instantiate helper class , download in memory##
-gcs = gcsLoad(project_name = "My Project", bucket_name="lab_data_1")
-filesdownloaded = gcs.downloadFilesLocal(folder='appwall_db',destinationFolder ='') #['/content/appwall_db_dbe.security.db']
+gcs = gcsLoad(project_name = "My Project", bucket_name="mybucket")
+filesdownloaded = gcs.downloadFilesLocal(folder='myfolder',destinationFolder ='')
 print ("Downloaded filename", filesdownloaded)
 
 #################################################################################################################
@@ -306,15 +294,6 @@ python_repl_appwall.run(pd.set_option('display.max_colwidth', 500))
 
 
 name_appwall = "python_repl_for_pandas_dataframes_appwall_database"
-
-description_appwall= """
-A Python shell to execute pandas commands on appwall dataframe 'df' which contains appwall database (db).
-The column names in this pandas dataframe df can be found in this list = ['Date','TargetPort','TargetIP','TransID','TunnelID','IsPassiveMode','Title','URI','Description']
-The dataframe df contains entries in increasing order of time, 
-such that the latest entry is at the end and earliest entry is at the beginning.
-Output should be only the pandas commands converted to string using to_string() and no other words. 
-The final answer should always be enclosed in a print() function
-"""
 
 description_appwall_2= """
 A Python shell to execute pandas commands on appwall dataframe 'df' which contains appwall database (db).
