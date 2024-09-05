@@ -1,6 +1,4 @@
-# Multi services question answering bot
-
-#### Try it here
+## Try it on huggingface spaces
 
 https://huggingface.co/spaces/bridge4/syslogs
 
