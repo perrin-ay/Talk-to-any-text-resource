@@ -6,7 +6,7 @@ https://huggingface.co/spaces/bridge4/syslogs
 
 
 - Multi service - Talk to appwall security events database,  alteon syslogs and Alteon REST API guide
-- Deterministic routing to select service chain with keyword matching
+- Deterministic routing to select service chain with keyword matching in user questions
 - Talk to database: convert database to pandas dataframe and uses LLM to generate natural language to pandas commands in context of the data which is sent to python repl execute generated commands and fetch response from dataframe
 - Similarly talk to syslogs or any text based resources which can be converted to pandas dataframe
 
