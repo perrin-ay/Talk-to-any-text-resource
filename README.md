@@ -10,7 +10,7 @@ https://huggingface.co/spaces/bridge4/syslogs
 - Talk to database: Converts database to pandas dataframe and uses LLM to generate pandas commands from natural language, in context of your dataframe, which is then sent to a python repl to execute generated commands and fetch response from the dataframe.
 - Similarly talk to syslogs or any text based resources which can be converted to pandas dataframe
 
-**Advantage with using the approach of conversing with dataframes**
+**Advantage of conversing with dataframes**
 
 - Avoids RAG
 - Overcomes limitations of RAG based question answering when dealing with data in csv , excel, db formats or where textual data contains events or logs.
